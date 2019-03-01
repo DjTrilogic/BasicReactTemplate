@@ -1,10 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import configureStore from './store/config/configureStore';
+import { Provider } from 'react-redux';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { login } from './store/actions/account';
+import { ConnectedRouter } from 'connected-react-router';
+import { Switch, Route } from 'react-router';
+import { history } from './store/config/configureStore';
+import { ManagerModule } from './modules/manager';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = configureStore();
+
+store.dispatch(login({ uid: "abbass" }));
+
+ReactDOM.render(
+    <Provider store={store}>
+        <ConnectedRouter history={history}>
+            <Switch>
+                <Route path="/manager" component={ManagerModule} />
+            </Switch>
+        </ConnectedRouter>
+    </Provider>
+    , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

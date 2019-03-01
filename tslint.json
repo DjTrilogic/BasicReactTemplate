@@ -1,0 +1,10 @@
+{
+    "extends": [
+        // your other plugins...
+        "tslint-react-hooks"
+    ],
+    "rules": {
+        // your other rules...
+        "react-hooks-nesting": "error"
+    }
+}
