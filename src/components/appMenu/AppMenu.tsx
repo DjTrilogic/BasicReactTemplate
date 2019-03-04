@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import classNames from 'classnames';
 import { withStyles, Theme, StyleRules } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -17,6 +17,7 @@ import { sideBarImage } from '../../assets/jss';
 import { ModuleRoute } from '../../modules';
 import { useMappedState, useDispatch } from 'redux-react-hook';
 import { State } from '../../store/config/configureStore';
+import { logout } from '../../store/actions/account';
 
 export interface AppBarProps {
     classes?: any;
@@ -32,11 +33,18 @@ export function AppMenuRaw(props: AppBarProps) {
     const [open, setOpen] = useState<boolean>(isOpen);
     const mapStateToProps = useCallback((state: State) => (
         {
+            isLogged: state.account.loginResponse,
             pathname: state.router.location.pathname,
         }),
         [],
     )
-    const { pathname } = useMappedState(mapStateToProps);
+    const { isLogged, pathname } = useMappedState(mapStateToProps);
+    const dispatch = useDispatch();
+    if (!isLogged) {
+        return (
+            <Redirect to="/login" />
+        )
+    }
 
     function activeRoute(routeName: string) {
         return pathname.indexOf(routeName) > -1 ? true : false;
@@ -56,6 +64,10 @@ export function AppMenuRaw(props: AppBarProps) {
     function toggle() {
         onToggle(!open)
         setOpen(!open)
+    }
+
+    function onLogout() {
+        dispatch(logout());
     }
 
     var links = (
@@ -107,7 +119,7 @@ export function AppMenuRaw(props: AppBarProps) {
                         {getTitle()}
                     </Typography>
                     <div className={classes.grow} />
-                    <Button color="inherit">Login</Button>
+                    <Button color="inherit" onClick={onLogout}>Logout</Button>
                 </Toolbar>
             </AppBar>
             <Drawer

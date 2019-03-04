@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,6 +13,10 @@ import Typography from '@material-ui/core/Typography';
 import withStyles, { StyleRules } from '@material-ui/core/styles/withStyles';
 import { Theme } from '@material-ui/core';
 import { Configuration, AuthenticationApi } from '../../api/loginServer';
+import { useDispatch, useMappedState } from 'redux-react-hook';
+import { login } from '../../store/actions/account';
+import { State } from '../../store/config/configureStore';
+import { Redirect } from 'react-router';
 
 
 const styles = (theme: Theme): StyleRules => ({
@@ -55,12 +59,26 @@ function LoginRaw(props: any) {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
     const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch();
+    const mapStateToProps = useCallback((state: State) => (
+        {
+            loggedIn: state.account.loginResponse,
+        }),
+        [],
+    )
+    const { loggedIn } = useMappedState(mapStateToProps);
+
+    if (loggedIn) {
+        return (
+            <Redirect to="/manager/dashboard" />
+        )
+    }
 
     function handleSubmit(event: React.FormEvent) {
         setLoading(true);
         api.token({ username, password })
             .then((response) => {
-                console.log(response);
+                dispatch(login(response));
             })
             .catch((reason) => {
                 console.log(reason);
@@ -84,12 +102,12 @@ function LoginRaw(props: any) {
                 {loading && <div>LOADING...</div>}
                 <form className={classes.form} onSubmit={handleSubmit}>
                     <FormControl margin="normal" required fullWidth>
-                        <InputLabel htmlFor="email">Email Address</InputLabel>
-                        <Input value={username} autoComplete="email" autoFocus onChange={(e) => { setUsername(e.target.value) }} />
+                        <InputLabel htmlFor="username">Email Address</InputLabel>
+                        <Input value={username} name="password" autoFocus onChange={(e) => { setUsername(e.target.value) }} />
                     </FormControl>
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor="password">Password</InputLabel>
-                        <Input type="password" value={password} autoComplete="current-password" onChange={(e) => { setPassword(e.target.value) }} />
+                        <Input type="password" name="password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
                     </FormControl>
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}

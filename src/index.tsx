@@ -14,8 +14,6 @@ import { LoginModule } from './modules/login';
 
 const store = configureStore();
 
-store.dispatch(login({ uid: "abbass" }));
-
 ReactDOM.render(
     <StoreContext.Provider value={store}>
         <Provider store={store}>
