@@ -3,6 +3,8 @@ import Dashboard from "@material-ui/icons/Dashboard";
 import Ballot from "@material-ui/icons/Ballot";
 import Mail from "@material-ui/icons/Mail";
 import { ModuleRoute } from "..";
+import { BotListRaw } from '../../components/botList/BotList';
+import { BotPage } from '../../pages/bot';
 
 const routes: ModuleRoute[] = [
     {
@@ -15,7 +17,7 @@ const routes: ModuleRoute[] = [
         path: "/bots",
         name: "Bots",
         icon: Ballot,
-        component: () => (<div>BOTS</div>)
+        component: () => (<BotPage />)
     },
     {
         path: "/accounts",

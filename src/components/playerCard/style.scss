@@ -1,0 +1,360 @@
+@import "../../styles/variables";
+
+.player-card {
+    display: inline-block;
+    cursor: pointer;
+    // filter: drop-shadow(10px 15px 10px #333);
+    height: 290px;
+    width: 190px;
+    font-size: 16px;
+    text-align: left;
+    font-family: 'Din Pro Condensed Medium','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    .rating {
+        top: 32px;
+        left: 24px;
+        font-size: 40px;
+        line-height: 38px;
+        position: relative;
+    }
+
+    .position {
+        top: 27px;
+        left: 30px;
+        font-size: 18px;
+        position: relative;
+    }
+
+    .club {
+        left: 25px;
+        top: 60px;
+        width: 32px;
+        position: relative;
+    }
+
+    .country {
+        left: 28px;
+        top: -3px;
+        width: 30px;
+        position: relative;
+    }
+
+    .name {
+        position: relative;
+        top: 43px;
+        left: 8px;
+        font-size: 22px;
+        width: 172px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .meta{
+        position: relative;
+        height: 72px;
+        top: 38px;
+        width: 154px;
+        left: 19px;
+        padding: 3px;
+    }
+    
+    .image {
+        position: relative;
+        top: -18px;
+        left: 58px;
+        width: 112px;
+        img {
+            width: 112px;
+            height:  112px;
+            position: absolute;
+        }
+    }
+
+    img{
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        vertical-align: middle;
+        border: 0;
+    }
+
+}
+
+.special-player-card {
+    position: relative;
+    .image {
+        top: -18px;
+        left: 15px;
+        width: 160px;
+        img {
+            width: 160px;
+            height:  160px;
+        }
+    }
+    .country {
+        left: 36px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .club {
+        left: 35px;
+        z-index: 1;
+    }
+
+    .rating {
+        left: 35px;
+        z-index: 1;
+    }
+
+    .position {
+        left: 42px;
+        z-index: 1;
+    }
+
+    .top-overlay{
+        box-sizing: content-box;
+        width: 41px;
+        height: 154px;
+        position: absolute;
+        top: 12px;
+        left: 29px;
+        z-index: 1;
+        background: #000;
+        background: linear-gradient(180deg, transparent 10%, rgba(0,0,0,0.65) 64%, rgba(0,0,0,0.55) 89%, rgba(0,0,0,0.05) 100%);
+        display: block;
+    }
+}
+
+.kind-ucl-live{
+    color: #F5F5F5;
+    background-image: url(./images/ucl_live.png?v=11);
+    .info{
+        color:#F5F5F5;
+    }
+}
+
+.kind-europa-live{
+    color: #F39200;;
+    background-image: url(./images/europa_live.png?v=11);
+    .info{
+        color:#F39200;
+    }
+}
+
+.kind-ucl-gold
+{
+    color: white;
+    background-image: url(./images/ucl_non_rare.png?v=7);
+    .info{
+        color:white;
+    }
+}
+
+.kind-ucl-rare-gold
+{
+    color: white;
+    background-image: url(./images/ucl_rare.png?v=7);
+    .info{
+        color:white;
+    }
+}
+
+
+.kind-legend
+{
+    color: #1e3c5c;
+    background-image: url(./images/icon.png?v=4);
+    .info{
+        color:#1e3c5c;
+    }
+}
+
+.kind-tots,.kind-tots-gold
+{
+    color: black;
+    background-image: url(./images/totsg.png?v=2);
+    .info{
+        color:$gold ;
+    }
+}
+
+.kind-tots-silver
+{
+    background-image: url(./images/totss.png?v=2);
+    color:#010b2e; 
+    .info{
+        color: #dee6ec;
+    }
+}
+
+.kind-totks,.kind-rb,.kind-record-breaker
+{
+    color: white;
+    background-image: url(./images/blueredc.png?v=2);
+    .info{
+        color:white;
+    }
+}
+
+.kind-hero
+{
+    color: $lightpurple;
+    background-image: url(./images/purplec.png?v=2);
+    .info{
+        color:black
+    }
+}
+
+.kind-totgs,.kind-gotm
+{
+    color: $lightcyan;
+    background-image: url(./images/promoa.png?v=2);
+    .info{
+        color:black
+    }
+}
+
+.kind-otw,.kind-ones-to-watch
+{
+    color: $primarycolor;
+    background-image: url(./images/otw.png?v=2);
+    .info{
+        color:$primarycolor
+    }
+}
+
+.kind-motm
+{
+    color: white;
+    background-image: url(./images/orangec.png?v=2);
+    .info{
+        color:$darkorange
+    }
+}
+
+.kind-imotm
+{
+    color: white;
+    background-image: url(./images/imotmc.png?v=2);
+    .info{
+        color:$darkorange;
+    }
+}
+
+.kind-fut-birthday
+{
+    color: white;
+    background-image: url(./images/promob.png?v=2);
+    .info{
+        color:$lightblue;
+    }
+}
+
+.kind-halloween
+{
+    color: $orange;
+    background-image: url(./images/halloween.png?v=2);
+    .info{
+        color:$orange;
+    }
+}
+
+.kind-toty
+{
+    color: $gold ;
+    background-image: url(./images/bluec.png?v=2);
+    .info{
+        color:$gold ;
+    }
+}
+
+.kind-movember
+{
+    color: $darkbrown;
+    background-image: url(./images/movember.png?v=2);
+    .info{
+        color:$darkbrown ;
+    }
+}
+
+.kind-if,.kind-tif,.kind-sif,.kind-fif,.kind-totw-gold
+{
+    color: $gold ;
+    background-image: url(./images/goldinform.png?v=2);
+    .info{
+        color:$gold;
+    }
+}
+
+.kind-rare-gold
+{
+    color: #654d0a;
+    background-image: url(./images/goldrnif.png?v=2);
+    .info{
+        color:#412b18;
+    }
+}
+
+.kind-gold
+{
+    background-image: url(./images/goldnrnif.png?v=2);
+    color: #654d0a;
+    .info{
+        color:#412b18;
+    }
+}
+
+.kind-silver
+{
+    background-image: url(./images/silvernrnif.png?v=2);
+    color: #2e3136;
+    .info{
+        color:#2e3136;
+    }
+}
+
+.kind-totw-silver
+{
+    background-image: url(./images/silverinform.png?v=2);
+    color: #92a1aa;
+    .info{
+        color:#92a1aa;
+    }
+}
+
+.kind-rare-silver
+{
+    background-image: url(./images/silverrnif.png?v=2);
+    color: #2e3136;
+    .info{
+        color:#2e3136;
+    }
+}
+
+.kind-bronze
+{
+    background-image: url(./images/bronzenrnif.png?v=2);
+    color: #452d17;
+    .info{
+        color:#452d17;
+    }
+}
+
+.kind-totw-bronze
+{
+    background-image: url(./images/bronzeinform.png?v=2);
+    color: #c99460;
+    .info{
+        color:#452d17;
+    }
+}
+
+.kind-rare-bronze
+{
+    background-image: url(./images/bronzernif.png?v=2);
+    color: #452d17;
+    .info{
+        color:#452d17;
+    }
+}

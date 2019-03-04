@@ -78,6 +78,7 @@ function LoginRaw(props: any) {
         setLoading(true);
         api.token({ username, password })
             .then((response) => {
+                console.log(response.access_token);
                 dispatch(login(response));
             })
             .catch((reason) => {
