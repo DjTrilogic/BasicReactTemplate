@@ -1,4 +1,4 @@
-import { Theme } from '@material-ui/core/styles';
+import { Theme, StyleRules } from '@material-ui/core/styles';
 import {
     drawerWidth,
     transition,
@@ -6,7 +6,7 @@ import {
     shrinkedDrawerWidth
 } from "..";
 
-const appStyle = (theme: Theme): any => ({
+const managerStyle = (theme: Theme): StyleRules => ({
     wrapper: {
         position: "relative",
         top: "0",
@@ -35,4 +35,4 @@ const appStyle = (theme: Theme): any => ({
     }
 });
 
-export default appStyle;
+export default managerStyle;

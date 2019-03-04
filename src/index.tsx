@@ -10,6 +10,7 @@ import { history } from './store/config/configureStore';
 import { ManagerModule } from './modules/manager';
 import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
+import { LoginModule } from './modules/login';
 
 const store = configureStore();
 
@@ -21,6 +22,7 @@ ReactDOM.render(
             <ConnectedRouter history={history}>
                 <Switch>
                     <Route path="/manager" component={ManagerModule} />
+                    <Route path="/login" component={LoginModule} />
                 </Switch>
             </ConnectedRouter>
         </Provider>
