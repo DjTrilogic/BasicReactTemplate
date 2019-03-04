@@ -15,6 +15,7 @@
     "classnames": "^2.2.6",
     "connected-react-router": "^6.3.1",
     "node-sass": "^4.11.0",
+    "portable-fetch": "^3.0.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-redux": "^6.0.1",
@@ -26,7 +27,8 @@
     "redux-thunk": "^2.3.0",
     "tslint": "^5.13.0",
     "tslint-react-hooks": "^1.1.0",
-    "typescript": "3.3.3333"
+    "typescript": "3.3.3333",
+    "url": "^0.11.0"
   },
   "scripts": {
     "start": "react-scripts start",
