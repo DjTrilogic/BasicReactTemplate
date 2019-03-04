@@ -1,27 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/config/configureStore';
-import { Provider } from 'react-redux';
+import { StoreContext } from 'redux-react-hook';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { login } from './store/actions/account';
-import { ConnectedRouter } from 'connected-react-router';
 import { Switch, Route } from 'react-router';
 import { history } from './store/config/configureStore';
 import { ManagerModule } from './modules/manager';
+import { ConnectedRouter } from 'connected-react-router';
+import { Provider } from 'react-redux';
 
 const store = configureStore();
 
 store.dispatch(login({ uid: "abbass" }));
 
 ReactDOM.render(
-    <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <Switch>
-                <Route path="/manager" component={ManagerModule} />
-            </Switch>
-        </ConnectedRouter>
-    </Provider>
+    <StoreContext.Provider value={store}>
+        <Provider store={store}>
+            <ConnectedRouter history={history}>
+                <Switch>
+                    <Route path="/manager" component={ManagerModule} />
+                </Switch>
+            </ConnectedRouter>
+        </Provider>
+    </StoreContext.Provider>
     , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

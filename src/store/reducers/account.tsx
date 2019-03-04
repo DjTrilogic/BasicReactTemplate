@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
 }
 
 export default (state = initialState, action: { type: string, payload: any }) => {
